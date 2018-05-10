@@ -29,3 +29,8 @@ node_modules
 
 # Ignore .DS_Store files on OS X
 .DS_Store
+#exclude build
+public/js/bundle.js
+public/js/bundle.js.map
+
+.vscode/

@@ -8,8 +8,8 @@ var keystone = require('keystone');
 var renderer = require('react-engine');
 
 var engine = renderer.server.create({
-	performanceCollector: function(stats) {
-	    console.log(stats);
+	performanceCollector: stats => {
+		console.log(stats);
 	},
 	// your options here
 });
@@ -19,21 +19,21 @@ var engine = renderer.server.create({
 // and documentation.
 
 keystone.init({
-	'name': 'React-example',
-	'brand': 'React-example',
+	name: 'React-example',
+	brand: 'React-example',
 
-	'sass': 'public',
-	'static': 'public',
-	'favicon': 'public/favicon.ico',
+	sass: 'public',
+	static: 'public',
+	favicon: 'public/favicon.ico',
 
-	'views': 'templates/views',
+	views: 'templates/views',
 	'view engine': 'jsx',
 	'custom engine': engine,
-	'view': renderer.expressView,
+	view: renderer.expressView,
 
 	'auto update': true,
-	'session': true,
-	'auth': true,
+	session: true,
+	auth: true,
 	'user model': 'User',
 });
 

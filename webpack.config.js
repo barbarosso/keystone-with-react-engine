@@ -1,6 +1,6 @@
 // Extended from:
 
-/*-------------------------------------------------------------------------------------------------------------------*\
+/* -------------------------------------------------------------------------------------------------------------------*\
 |  Copyright (C) 2016 PayPal                                                                                          |
 |                                                                                                                     |
 |  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance     |
@@ -17,36 +17,28 @@
 
 const production = process.env.NODE_ENV === 'production' ? true : false;
 
-'use strict';
+('use strict');
 
 module.exports = {
-  devtool: production ? null : 'sourcemaps',
+	devtool: production ? null : 'sourcemaps',
+	mode: 'development',
+	entry: __dirname + '/index.js',
+	watch: true,
+	output: {
+		path: __dirname + '/public/js',
+		filename: 'bundle.js',
+	},
 
-  entry: __dirname + '/index.js',
-
-  output: {
-    path: __dirname + '/public/js',
-    filename: 'bundle.js',
-  },
-
-  module: {
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015', 'stage-1'],
-        },
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-    ],
-  },
-
-  resolve: {
-    extensions: ['', '.js', '.jsx', '.json'],
-  },
+	module: {
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: ['babel-loader'],
+			},
+		],
+	},
+	resolve: {
+		extensions: ['*', '.js', '.jsx', '.json'],
+	},
 };

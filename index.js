@@ -1,6 +1,6 @@
 // Extended from:
 
-/*-------------------------------------------------------------------------------------------------------------------*\
+/* -------------------------------------------------------------------------------------------------------------------*\
 |  Copyright (C) 2016 PayPal                                                                                          |
 |                                                                                                                     |
 |  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance     |
@@ -25,16 +25,16 @@ var ReactEngineClient = require('react-engine/lib/client');
 
 // boot options
 var options = {
-  // routes: Routes,
+	// routes: Routes,
 
-  // supply a function that can be called
-  // to resolve the file that was rendered.
-  viewResolver: function(viewName) {
-    return require('./templates/views/' + viewName);
-  }
+	// supply a function that can be called
+	// to resolve the file that was rendered.
+	viewResolver: viewName => {
+		return require('./templates/views/' + viewName);
+	},
 };
 
-document.addEventListener('DOMContentLoaded', function onLoad() {
-  // boot the app when the DOM is ready
-  ReactEngineClient.boot(options);
+document.addEventListener('DOMContentLoaded', () => {
+	// boot the app when the DOM is ready
+	ReactEngineClient.boot(options);
 });
